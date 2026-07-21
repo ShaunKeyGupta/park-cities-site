@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Park Cities Private Consignment | Estate and Collection Consignment, Highland Park</title>
+<meta name="description" content="Private, appointment-only consignment office for estate coin and collectible collections in the Park Cities. Written valuations, insured transport, and auction placement through Gold Standard Auctions.">
+<!--
+  SETUP NOTES (delete this comment before deploy):
+  1. Replace every [PHONE], [PHONE_LINK], [EMAIL], [ADDRESS] placeholder. Search the file for "[".
+  2. Deploy: drop this file into a GitHub repo as index.html (GitHub Pages) or a Vercel project. No build step.
+  3. Language rule: this site says "written valuation" only. Do not add USPAP, certified, or IRS-qualified anywhere until the course certificate lands.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2530;
+    --ink-soft:#3d4654;
+    --paper:#f6f4ee;
+    --paper-deep:#eeeae0;
+    --bronze:#8c6d3f;
+    --oxblood:#5e2a2e;
+    --hairline:#c9c1b0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;animation:none!important;} }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-size:20px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .label{
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--bronze);
+  }
+  a{color:var(--ink);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--oxblood); outline-offset:3px;}
+
+  /* Top bar */
+  .topbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px clamp(20px,5vw,64px);
+    border-bottom:1px solid var(--hairline);
+  }
+  .topbar .wordmark{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;font-weight:600;color:var(--ink);text-decoration:none;}
+  .topbar .tel{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.06em;text-decoration:none;color:var(--ink-soft);}
+  .topbar .tel:hover{color:var(--oxblood);}
+
+  /* Catalog plate hero */
+  .plate{
+    max-width:880px;
+    margin:clamp(28px,6vh,64px) auto 0;
+    padding:0 20px;
+  }
+  .plate-frame{
+    border:1px solid var(--ink);
+    outline:1px solid var(--ink);
+    outline-offset:5px;
+    padding:clamp(44px,8vw,88px) clamp(24px,7vw,80px);
+    text-align:center;
+    background:var(--paper);
+  }
+  .plate .est{margin-bottom:26px;color:var(--ink-soft);}
+  .plate h1{
+    font-weight:500;
+    font-size:clamp(38px,6.4vw,64px);
+    line-height:1.12;
+    letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .plate h1 em{font-style:italic;font-weight:400;}
+  .plate .deck{
+    font-size:clamp(20px,2.4vw,23px);
+    max-width:560px;margin:0 auto 38px;
+    color:var(--ink-soft);
+  }
+  .rule-orn{display:flex;align-items:center;gap:14px;justify-content:center;margin:0 auto 38px;max-width:280px;}
+  .rule-orn::before,.rule-orn::after{content:"";flex:1;height:1px;background:var(--hairline);}
+  .rule-orn span{width:7px;height:7px;background:var(--bronze);transform:rotate(45deg);display:block;}
+  .cta{
+    display:inline-block;
+    font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;
+    color:var(--paper);background:var(--ink);
+    padding:18px 38px;text-decoration:none;
+    border:1px solid var(--ink);
+    transition:background .2s,color .2s;
+  }
+  .cta:hover{background:var(--oxblood);border-color:var(--oxblood);}
+  .cta.ghost{background:transparent;color:var(--ink);margin-left:14px;}
+  .cta.ghost:hover{color:var(--oxblood);border-color:var(--oxblood);background:transparent;}
+  .plate .fine{margin-top:26px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.04em;color:var(--ink-soft);}
+
+  section{max-width:880px;margin:0 auto;padding:clamp(56px,10vh,110px) 20px 0;}
+  .sec-head{text-align:center;margin-bottom:44px;}
+  .sec-head h2{font-weight:500;font-size:clamp(30px,4.4vw,42px);margin-top:14px;line-height:1.15;}
+  .prose{max-width:640px;margin:0 auto;color:var(--ink-soft);}
+  .prose p{margin-bottom:1.1em;}
+  .prose strong{color:var(--ink);font-weight:600;}
+
+  /* Guarantee certificate: the signature element */
+  .cert{
+    max-width:760px;margin:0 auto;
+    background:var(--paper-deep);
+    border:1px solid var(--bronze);
+    outline:1px solid var(--bronze);outline-offset:4px;
+    padding:clamp(36px,6vw,60px) clamp(24px,6vw,64px);
+    text-align:center;position:relative;
+  }
+  .cert .seal{
+    width:64px;height:64px;border-radius:50%;
+    border:1.5px solid var(--bronze);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 24px;
+    font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--bronze);font-weight:600;
+  }
+  .cert h3{font-weight:500;font-size:clamp(26px,3.6vw,34px);margin-bottom:18px;}
+  .cert p{max-width:520px;margin:0 auto 1em;color:var(--ink-soft);}
+  .cert .clause{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.08em;color:var(--bronze);margin-top:20px;}
+
+  /* Ledger process */
+  .ledger{max-width:680px;margin:0 auto;border-top:1px solid var(--hairline);}
+  .ledger .row{
+    display:grid;grid-template-columns:88px 1fr;gap:22px;
+    padding:26px 6px;border-bottom:1px solid var(--hairline);align-items:baseline;
+  }
+  .ledger .no{
+    font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;font-style:italic;color:var(--bronze);
+  }
+  .ledger h4{font-weight:600;font-size:22px;margin-bottom:6px;}
+  .ledger p{color:var(--ink-soft);font-size:19px;}
+
+  /* Two-column handle/advisors */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);max-width:820px;margin:0 auto;}
+  @media(max-width:700px){.split{grid-template-columns:1fr;}}
+  .split h3{font-weight:500;font-size:26px;margin:14px 0 14px;}
+  .split ul{list-style:none;}
+  .split li{padding:10px 0;border-bottom:1px solid var(--hairline);color:var(--ink-soft);font-size:19px;}
+  .split li:last-child{border-bottom:none;}
+
+  /* Valuation offer */
+  .val{max-width:680px;margin:0 auto;text-align:center;}
+  .val .tiers{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hairline);border:1px solid var(--hairline);margin-top:36px;}
+  @media(max-width:600px){.val .tiers{grid-template-columns:1fr;}}
+  .tier{background:var(--paper);padding:34px 26px;}
+  .tier .label{color:var(--ink-soft);}
+  .tier .price{font-size:40px;font-weight:500;margin:12px 0 4px;}
+  .tier .price span{font-size:19px;font-style:italic;font-weight:400;color:var(--ink-soft);}
+  .tier p{color:var(--ink-soft);font-size:18px;line-height:1.55;}
+
+  /* Appointment */
+  .appt{
+    margin-top:clamp(56px,10vh,110px);
+    background:var(--ink);color:var(--paper);
+    text-align:center;
+    padding:clamp(64px,10vh,110px) 20px;
+  }
+  .appt .label{color:var(--bronze);}
+  .appt h2{font-weight:500;font-size:clamp(30px,4.4vw,42px);margin:14px 0 20px;}
+  .appt p{max-width:520px;margin:0 auto 34px;color:#c8cdd6;}
+  .appt .cta{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  .appt .cta:hover{background:var(--bronze);border-color:var(--bronze);color:var(--paper);}
+  .appt .contact-lines{margin-top:34px;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:0.04em;line-height:2;color:#c8cdd6;}
+  .appt .contact-lines a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--bronze);}
+
+  footer{
+    background:var(--ink);color:#8b93a1;
+    font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.03em;line-height:1.9;
+    text-align:center;padding:0 20px 54px;
+  }
+  footer .hair{max-width:880px;margin:0 auto 34px;border-top:1px solid #333d4b;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="#top">Park Cities Private Consignment</a>
+  <a class="tel" href="tel:[PHONE_LINK]">[PHONE]</a>
+</header>
+
+<main id="top">
+
+  <div class="plate">
+    <div class="plate-frame">
+      <div class="est label">A Private Client Office of Gold Standard Auctions</div>
+      <h1>When a collection deserves <em>competition</em>, not an offer.</h1>
+      <p class="deck">Private, appointment-only consignment for estate coin and collectible collections in the Park Cities. Documented, insured, and handled by one person from signature through settlement.</p>
+      <div class="rule-orn"><span></span></div>
+      <a class="cta" href="#appointment">Request a Private Consultation</a><a class="cta ghost" href="#advisors">For Advisors</a>
+      <p class="fine">Highland Park, Dallas &middot; By appointment only</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <div class="label">The Difference</div>
+      <h2>One dealer gives you one number.</h2>
+    </div>
+    <div class="prose">
+      <p>A dealer's offer is a single buyer's price, and that buyer is paid to give you the least the market will forgive. An auction places a collection in front of the collectors who have waited years for it, and lets them compete.</p>
+      <p>Our office exists for families and estates holding significant collections: to document what is actually there, establish what it is actually worth in writing, and, when the family chooses, place it at auction with every detail handled.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="label">Our Standing Commitment</div>
+      <h2>The Higher Hammer Guarantee</h2>
+    </div>
+    <div class="cert">
+      <div class="seal">&#8225;</div>
+      <h3>Your best offer becomes the floor.</h3>
+      <p>Bring any written offer you already hold. We set it as the auction reserve, so you are guaranteed at least that figure, and the bidding can only take it higher.</p>
+      <p><strong style="color:var(--ink)">There is no scenario in which auction leaves you worse off than the check in your hand.</strong></p>
+      <div class="clause">Consignment fee 10 percent &middot; Waived on collections above $100,000</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="label">The Process</div>
+      <h2>Handled once. Handled properly.</h2>
+    </div>
+    <div class="ledger">
+      <div class="row"><div class="no">i.</div><div><h4>Private consultation</h4><p>In our Highland Park office or at your home. A complete walkthrough of the collection, at no cost and with no obligation.</p></div></div>
+      <div class="row"><div class="no">ii.</div><div><h4>Written valuation</h4><p>A documented valuation of the collection, delivered within five business days, suitable for the estate file.</p></div></div>
+      <div class="row"><div class="no">iii.</div><div><h4>Insured intake</h4><p>Door-to-door insured transport, photographed intake, and a chain-of-custody record for every item from the moment it leaves your hands.</p></div></div>
+      <div class="row"><div class="no">iv.</div><div><h4>Grading and catalog</h4><p>Significant pieces are professionally graded and encapsulated, then photographed and placed in the appropriate auction catalog.</p></div></div>
+      <div class="row"><div class="no">v.</div><div><h4>One settlement</h4><p>A single settlement wire, 30 to 45 days after buyer payment is received, with a full accounting of every lot. One dedicated point of contact throughout.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="split">
+      <div>
+        <div class="label">What We Handle</div>
+        <h3>Collections we consign</h3>
+        <ul>
+          <li>United States and world coin collections</li>
+          <li>Gold, silver, and platinum bullion holdings</li>
+          <li>Currency and paper money</li>
+          <li>Fine jewelry and timepieces</li>
+          <li>Complete estates with mixed collections</li>
+        </ul>
+      </div>
+      <div id="advisors">
+        <div class="label">For Fiduciaries</div>
+        <h3>Attorneys, trustees, and advisors</h3>
+        <ul>
+          <li>Documented written valuation for the estate file</li>
+          <li>Chain-of-custody records for every item</li>
+          <li>Insured transport and secure holding</li>
+          <li>Your client relationship remains yours</li>
+          <li>A single accountable point of contact</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="val">
+      <div class="label">The Written Valuation</div>
+      <h2 style="font-weight:500;font-size:clamp(30px,4.4vw,42px);margin:14px 0 20px;">Know what is actually there.</h2>
+      <p class="prose" style="margin:0 auto;">Most families discover a collection's value only after it has been sold. A written valuation puts the number on paper first, so every decision that follows is made with the facts.</p>
+      <div class="tiers">
+        <div class="tier">
+          <div class="label">Collection Walkthrough</div>
+          <div class="price">Complimentary</div>
+          <p>A private, in-person review of the collection with a verbal assessment of what merits documentation.</p>
+        </div>
+        <div class="tier">
+          <div class="label">Written Valuation</div>
+          <div class="price">$750 <span>from</span></div>
+          <p>A documented written valuation delivered within five business days. Attorney-driven estate files quoted individually.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="appt" id="appointment">
+    <div class="label">Appointments</div>
+    <h2>Request a private consultation</h2>
+    <p>Consultations are held in our Highland Park office or, for larger collections, at your home. Tell us briefly what you are holding and we will arrange a time.</p>
+    <a class="cta" href="tel:[PHONE_LINK]">Call [PHONE]</a>
+    <div class="contact-lines">
+      <a href="mailto:[EMAIL]">[EMAIL]</a><br>
+      [ADDRESS]<br>
+      By appointment only
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="hair"></div>
+  Park Cities Private Consignment is a private client office of Gold Standard Auctions.<br>
+  Consignment fee 10 percent, waived on collections above $100,000. Settlement 30 to 45 days after buyer payment is received.<br>
+  Valuations are written valuations prepared for informational and estate documentation purposes.
+</footer>
+
+</body>
+</html>
