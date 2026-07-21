@@ -5,12 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Park Cities Private Consignment | Estate and Collection Consignment, Highland Park</title>
 <meta name="description" content="Private, appointment-only consignment office for estate coin and collectible collections in the Park Cities. Written valuations, insured transport, and auction placement through Gold Standard Auctions.">
-<!--
-  SETUP NOTES (delete this comment before deploy):
-  1. Replace every [PHONE], [PHONE_LINK], [EMAIL], [ADDRESS] placeholder. Search the file for "[".
-  2. Deploy: drop this file into a GitHub repo as index.html (GitHub Pages) or a Vercel project. No build step.
-  3. Language rule: this site says "written valuation" only. Do not add USPAP, certified, or IRS-qualified anywhere until the course certificate lands.
--->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -99,6 +93,7 @@
   .cta.ghost{background:transparent;color:var(--ink);margin-left:14px;}
   .cta.ghost:hover{color:var(--oxblood);border-color:var(--oxblood);background:transparent;}
   .plate .fine{margin-top:26px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.04em;color:var(--ink-soft);}
+  .hero-guarantee{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.05em;color:var(--oxblood);font-weight:600;max-width:520px;margin:0 auto 34px;}
 
   section{max-width:880px;margin:0 auto;padding:clamp(56px,10vh,110px) 20px 0;}
   .sec-head{text-align:center;margin-bottom:44px;}
@@ -126,6 +121,26 @@
   .cert h3{font-weight:500;font-size:clamp(26px,3.6vw,34px);margin-bottom:18px;}
   .cert p{max-width:520px;margin:0 auto 1em;color:var(--ink-soft);}
   .cert .clause{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.08em;color:var(--bronze);margin-top:20px;}
+
+  /* Value stack */
+  .stack{max-width:720px;margin:0 auto;border-top:1px solid var(--hairline);}
+  .stack-row{display:grid;grid-template-columns:1fr auto;grid-template-areas:"item tag" "note tag";gap:2px 18px;padding:20px 6px;border-bottom:1px solid var(--hairline);align-items:center;}
+  .stack-item{grid-area:item;font-weight:600;font-size:21px;}
+  .stack-note{grid-area:note;color:var(--ink-soft);font-size:18px;}
+  .stack-tag{grid-area:tag;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--bronze);border:1px solid var(--bronze);padding:7px 14px;white-space:nowrap;}
+  .stack-close{text-align:center;margin-top:30px;font-size:21px;font-weight:600;}
+  @media(max-width:600px){.stack-row{grid-template-columns:1fr;grid-template-areas:"item" "note" "tag";}.stack-tag{justify-self:start;}}
+
+  /* FAQ */
+  .faq{max-width:680px;margin:0 auto;}
+  .faq details{border-bottom:1px solid var(--hairline);}
+  .faq summary{cursor:pointer;list-style:none;padding:22px 6px;font-weight:600;font-size:21px;display:flex;justify-content:space-between;align-items:center;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--bronze);font-weight:400;}
+  .faq details[open] summary::after{content:"\2212";}
+  .faq .a{padding:0 6px 22px;color:var(--ink-soft);font-size:19px;}
+  .dl-link{display:inline-block;margin-top:16px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;color:var(--oxblood);text-decoration:none;border-bottom:1px solid var(--oxblood);padding-bottom:3px;}
+  .dl-link:hover{color:var(--bronze);border-color:var(--bronze);}
 
   /* Ledger process */
   .ledger{max-width:680px;margin:0 auto;border-top:1px solid var(--hairline);}
@@ -169,6 +184,9 @@
   .appt p{max-width:520px;margin:0 auto 34px;color:#c8cdd6;}
   .appt .cta{background:var(--paper);color:var(--ink);border-color:var(--paper);}
   .appt .cta:hover{background:var(--bronze);border-color:var(--bronze);color:var(--paper);}
+  .appt .cta.ghost-dark{background:transparent;color:var(--paper);border-color:var(--paper);margin-left:14px;}
+  .appt .cta.ghost-dark:hover{color:var(--bronze);border-color:var(--bronze);background:transparent;}
+  @media(max-width:600px){.appt .cta.ghost-dark{margin-left:0;margin-top:12px;display:block;}}
   .appt .contact-lines{margin-top:34px;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:0.04em;line-height:2;color:#c8cdd6;}
   .appt .contact-lines a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--bronze);}
 
@@ -184,7 +202,7 @@
 
 <header class="topbar">
   <a class="wordmark" href="#top">Park Cities Private Consignment</a>
-  <a class="tel" href="tel:[PHONE_LINK]">[PHONE]</a>
+  <a class="tel" href="tel:19454034862">(945) 403-4862</a>
 </header>
 
 <main id="top">
@@ -194,6 +212,7 @@
       <div class="est label">A Private Client Office of Gold Standard Auctions</div>
       <h1>When a collection deserves <em>competition</em>, not an offer.</h1>
       <p class="deck">Private, appointment-only consignment for estate coin and collectible collections in the Park Cities. Documented, insured, and handled by one person from signature through settlement.</p>
+      <p class="hero-guarantee">Backed by the Higher Hammer Guarantee: your collection cannot sell for less than your best written offer.</p>
       <div class="rule-orn"><span></span></div>
       <a class="cta" href="#appointment">Request a Private Consultation</a><a class="cta ghost" href="#advisors">For Advisors</a>
       <p class="fine">Highland Park, Dallas &middot; By appointment only</p>
@@ -220,9 +239,24 @@
       <div class="seal">&#8225;</div>
       <h3>Your best offer becomes the floor.</h3>
       <p>Bring any written offer you already hold. We set it as the auction reserve, so you are guaranteed at least that figure, and the bidding can only take it higher.</p>
-      <p><strong style="color:var(--ink)">There is no scenario in which auction leaves you worse off than the check in your hand.</strong></p>
+      <p><strong style="color:var(--ink)">Your collection cannot sell for less than your best written offer.</strong></p>
       <div class="clause">Consignment fee 10 percent &middot; Waived on collections above $100,000</div>
     </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="label">Included With Every Private Consignment</div>
+      <h2>Everything handled. Nothing billed separately.</h2>
+    </div>
+    <div class="stack">
+      <div class="stack-row"><div class="stack-item">Insured door-to-door transport</div><div class="stack-note">Your collection never travels uninsured or unaccompanied.</div><div class="stack-tag">Included</div></div>
+      <div class="stack-row"><div class="stack-item">Professional grading and encapsulation</div><div class="stack-note">Graded pieces routinely realize 20 to 500 percent more than raw.</div><div class="stack-tag">Included</div></div>
+      <div class="stack-row"><div class="stack-item">Catalog photography and placement</div><div class="stack-note">Presented to qualified bidders in the appropriate sale.</div><div class="stack-tag">Included</div></div>
+      <div class="stack-row"><div class="stack-item">Written valuation for the estate file</div><div class="stack-note">The same document offered at the $750 paid tier.</div><div class="stack-tag">Included</div></div>
+      <div class="stack-row"><div class="stack-item">One dedicated point of contact</div><div class="stack-note">From signature through the settlement wire.</div><div class="stack-tag">Included</div></div>
+    </div>
+    <p class="stack-close">Consignment fee 10 percent. Waived in full on collections above $100,000.</p>
   </section>
 
   <section>
@@ -262,6 +296,7 @@
           <li>Your client relationship remains yours</li>
           <li>A single accountable point of contact</li>
         </ul>
+        <a class="dl-link" href="executors-checklist.pdf" download>Download the Executor's Checklist</a>
       </div>
     </div>
   </section>
@@ -286,14 +321,48 @@
     </div>
   </section>
 
+
+  <section>
+    <div class="sec-head">
+      <div class="label">Common Questions</div>
+      <h2>Asked in nearly every consultation.</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>I already have an offer from a dealer. Why would auction do better?</summary>
+        <div class="a">A dealer's number is one buyer's price, set by someone paid to acquire for the least the market will forgive. At auction, the collectors who have waited years for specific pieces bid against each other. And with the Higher Hammer Guarantee, your written offer becomes the reserve, so the collection cannot sell for less than the number you already hold.</div>
+      </details>
+      <details>
+        <summary>What does this cost the estate?</summary>
+        <div class="a">The consignment fee is 10 percent, and it is waived entirely on collections above $100,000. Transport, grading, photography, cataloging, and the written valuation are included. The complimentary walkthrough carries no cost and no obligation.</div>
+      </details>
+      <details>
+        <summary>What happens if a piece does not sell?</summary>
+        <div class="a">A lot reserved at your best written offer clears that reserve or returns to you. Unsold pieces can be placed in a later catalog, adjusted, or retrieved. Nothing is ever sold below the reserve you agreed to in writing.</div>
+      </details>
+      <details>
+        <summary>Is the collection insured while you have it?</summary>
+        <div class="a">Yes. Coverage runs from insured pickup, through custody at our office, to the auction floor, with a documented chain-of-custody record for every item at every step.</div>
+      </details>
+      <details>
+        <summary>How quickly does the estate receive funds?</summary>
+        <div class="a">Settlement is a single wire with a full lot-level accounting, 30 to 45 days after the buyer's payment is received. A cash advance against qualifying lots is available when timing matters.</div>
+      </details>
+      <details>
+        <summary>Do we have to consign after the valuation?</summary>
+        <div class="a">No. The valuation is yours for the estate file regardless of what you decide. Many families use it simply to make an informed decision. There is no obligation at any step.</div>
+      </details>
+    </div>
+  </section>
+
   <div class="appt" id="appointment">
     <div class="label">Appointments</div>
     <h2>Request a private consultation</h2>
-    <p>Consultations are held in our Highland Park office or, for larger collections, at your home. Tell us briefly what you are holding and we will arrange a time.</p>
-    <a class="cta" href="tel:[PHONE_LINK]">Call [PHONE]</a>
+    <p>Consultations are held in our Highland Park office or, for larger collections, at your home. Auction catalogs close on a rolling calendar; collections received after a catalog closes are held for the following sale.</p>
+    <a class="cta" href="tel:19454034862">Call (945) 403-4862</a><a class="cta ghost-dark" href="mailto:contact@parkcitiescollectibles.com?subject=Private%20Consultation%20Request">Email the Office</a>
     <div class="contact-lines">
-      <a href="mailto:[EMAIL]">[EMAIL]</a><br>
-      [ADDRESS]<br>
+      <a href="mailto:contact@parkcitiescollectibles.com">contact@parkcitiescollectibles.com</a><br>
+      3412 Rosedale Ave, Dallas, TX 75205<br>
       By appointment only
     </div>
   </div>
