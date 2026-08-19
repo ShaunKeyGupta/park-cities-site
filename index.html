@@ -459,11 +459,17 @@ fbq('track', 'PageView');
     <div class="inq" id="inquiry">
       <div class="inq-head">Or Send a Private Inquiry</div>
       <form action="https://crm.zoho.com/crm/WebToLeadForm" name="WebToLeads" method="POST" id="pcInquiry" accept-charset="UTF-8">
-        <input type="hidden" name="xnQsjsdp" value="01e6681e350358214d84a6f9930be5bb5f6859db9ba2c5ba40e62cc7fcece825">
-        <input type="hidden" name="xmIwtLD" value="dcef8a92fb6f2e9186e6e1eae8540b516601d12012ce39cb84fef294dbb9c10be42a8b46736610f568d522185ce241ce">
+        <input type="hidden" name="xnQsjsdp" value="5aab3b96dd4a783edee8eebed574e058d55101014266cf64cfbc302cd5dbd5e9">
+        <input type="hidden" name="xmIwtLD" value="e860290aa62940726c3706d5139213f9c047a4b47ce6be77d995a9c76d23a2d4c31ae4a0b904763421afe546ccb635b5">
         <input type="hidden" name="actionType" value="TGVhZHM=">
         <input type="hidden" name="returnURL" value="https://theparkcitiesgallery.com/#inquiry">
         <input type="hidden" name="Lead Source" value="PC Website">
+        <input type="hidden" name="LEADCF183" value="Website">
+        <input type="hidden" name="LEADCF214" value="" id="cf_utm_source">
+        <input type="hidden" name="LEADCF216" value="" id="cf_utm_campaign">
+        <input type="hidden" name="LEADCF211" value="" id="cf_utm_content">
+        <input type="hidden" name="LEADCF309" value="" id="cf_fbc">
+        <input type="hidden" name="LEADCF308" value="" id="cf_fbp">
         <div class="hp-field" aria-hidden="true"><label>Leave this field empty<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
         <label for="f-name">Name</label>
         <input id="f-name" type="text" name="Last Name" required maxlength="80" autocomplete="name">
@@ -512,9 +518,36 @@ fbq('track', 'PageView');
 (function(){
   var f = document.getElementById('pcInquiry');
   if(!f) return;
+
+  // Helpers for attribution capture
+  function getParam(name){
+    try{ return new URLSearchParams(window.location.search).get(name) || ''; }
+    catch(err){ return ''; }
+  }
+  function getCookie(name){
+    try{
+      var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return m ? m.pop() : '';
+    }catch(err){ return ''; }
+  }
+  function setVal(id, val){
+    var el = document.getElementById(id);
+    if(el && val) el.value = val;
+  }
+  // Capture UTM params on load (in case the user navigates before submitting)
+  setVal('cf_utm_source', getParam('utm_source'));
+  setVal('cf_utm_campaign', getParam('utm_campaign'));
+  setVal('cf_utm_content', getParam('utm_content'));
+
   f.addEventListener('submit', function(e){
     var hp = f.querySelector('input[name="company_website"]');
     if(hp && hp.value){ e.preventDefault(); return false; }
+    // Re-read UTM (in case only now available) and Meta cookies at submit time
+    setVal('cf_utm_source', getParam('utm_source'));
+    setVal('cf_utm_campaign', getParam('utm_campaign'));
+    setVal('cf_utm_content', getParam('utm_content'));
+    setVal('cf_fbc', getCookie('_fbc'));
+    setVal('cf_fbp', getCookie('_fbp'));
     try{ sessionStorage.setItem('pcInq','1'); }catch(err){}
     if(typeof fbq === 'function'){ fbq('track','Lead'); }
   });
