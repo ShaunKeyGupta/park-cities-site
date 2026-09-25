@@ -458,7 +458,7 @@ fbq('track', 'PageView');
 
     <div class="inq" id="inquiry">
       <div class="inq-head">Or Send a Private Inquiry</div>
-      <form action="https://crm.zoho.com/crm/WebToLeadForm" name="WebToLeads" method="POST" id="pcInquiry" accept-charset="UTF-8">
+      <form action="https://crm.zoho.com/crm/WebToLeadForm" name="WebToLeads" method="POST" id="pcInquiry" target="zoho_sink" accept-charset="UTF-8">
         <input type="hidden" name="xnQsjsdp" value="5aab3b96dd4a783edee8eebed574e058d55101014266cf64cfbc302cd5dbd5e9">
         <input type="hidden" name="xmIwtLD" value="e860290aa62940726c3706d5139213f9c047a4b47ce6be77d995a9c76d23a2d4c31ae4a0b904763421afe546ccb635b5">
         <input type="hidden" name="actionType" value="TGVhZHM=">
@@ -548,17 +548,22 @@ fbq('track', 'PageView');
     setVal('cf_utm_content', getParam('utm_content'));
     setVal('cf_fbc', getCookie('_fbc'));
     setVal('cf_fbp', getCookie('_fbp'));
-    try{ sessionStorage.setItem('pcInq','1'); }catch(err){}
     if(typeof fbq === 'function'){ fbq('track','Lead'); }
+    // Show a brief confirmation, then always restore a clean, submittable form.
+    var ok = document.getElementById('inqOk');
+    try{
+      setTimeout(function(){
+        if(ok){ ok.style.display = 'block'; }
+        f.reset();
+      }, 50);
+      setTimeout(function(){
+        if(ok){ ok.style.display = 'none'; }
+      }, 6000);
+    }catch(err){}
+    // Let the POST proceed to Zoho in the hidden iframe; do not block or lock the form.
   });
-  try{
-    if(sessionStorage.getItem('pcInq') === '1' && location.hash === '#inquiry'){
-      f.style.display = 'none';
-      document.getElementById('inqOk').style.display = 'block';
-      sessionStorage.removeItem('pcInq');
-    }
-  }catch(err){}
 })();
 </script>
+<iframe name="zoho_sink" id="zoho_sink" style="display:none;width:0;height:0;border:0;" aria-hidden="true"></iframe>
 </body>
 </html>
